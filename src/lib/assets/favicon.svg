@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <title>zer0x64-logo</title>
+
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="62" fill="#1f2937" stroke="#374151" stroke-width="2"/>
+
+  <!-- Shield outline -->
+  <path d="M64 20 L90 32 L90 56 C90 76 64 100 64 100 C64 100 38 76 38 56 L38 32 Z"
+        fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+
+  <!-- Shield fill with gradient -->
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+  <path d="M64 22 L88 33 L88 56 C88 75 64 97 64 97 C64 97 40 75 40 56 L40 33 Z"
+        fill="url(#shieldGrad)"/>
+
+  <!-- Binary/Hex code elements -->
+  <text x="64" y="45" text-anchor="middle" fill="#e5e7eb" font-family="monospace" font-size="8" font-weight="bold">0x64</text>
+  <text x="50" y="58" text-anchor="middle" fill="#9ca3af" font-family="monospace" font-size="6">101</text>
+  <text x="78" y="58" text-anchor="middle" fill="#9ca3af" font-family="monospace" font-size="6">010</text>
+  <text x="64" y="68" text-anchor="middle" fill="#9ca3af" font-family="monospace" font-size="6">1100</text>
+
+  <!-- Lock/Security icon in center -->
+  <rect x="58" y="72" width="12" height="8" rx="1" fill="#60a5fa" opacity="0.8"/>
+  <path d="M60 72 L60 69 C60 67 61.5 66 64 66 C66.5 66 68 67 68 69 L68 72"
+        fill="none" stroke="#60a5fa" stroke-width="1.5" opacity="0.8"/>
+  <circle cx="64" cy="76" r="1.5" fill="#1f2937"/>
+</svg>
