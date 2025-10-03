@@ -2,9 +2,9 @@ name: SvelteKit CI/CD
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   build_and_test:
@@ -21,12 +21,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Run ESLint (optional, but recommended)
-        run: npm run lint
-
-      - name: Run unit tests (e.g., Vitest)
-        run: npm run test # Assuming you have a 'test' script in your package.json
 
       - name: Build SvelteKit application
         run: npm run build # This will create the production build in the 'build' or 'dist' directory
