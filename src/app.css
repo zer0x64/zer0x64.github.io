@@ -2,23 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dark Cyberpunk Theme */
+/* Premium Minimalist Dark Tech Theme */
 :root {
-    --bg-primary: #0a0a0a;
-    --bg-secondary: #111111;
-    --bg-card: #1a1a1a;
-    --bg-card-hover: #222222;
-    --text-primary: #e0e0e0;
-    --text-secondary: #a0a0a0;
-    --neon-cyan: #00ffff;
-    --neon-pink: #ff00ff;
-    --neon-green: #39ff14;
-    --neon-purple: #bf00ff;
-    --neon-blue: #0099ff;
-    --border-glow: rgba(0, 255, 255, 0.3);
+    /* Color Palette */
+    --bg-primary: #09090b;      /* Very deep slate/zinc black */
+    --bg-secondary: #111113;    /* Subtle contrast background */
+    --bg-card: #18181b;         /* Zinc-900 for containers */
+    --bg-card-hover: #222226;   /* Slight light-up on hover */
+    
+    /* Typography */
+    --text-primary: #ffffff;    /* Pure white headings/labels */
+    --text-secondary: #e4e4e7;  /* High-contrast silver/zinc text (zinc-200) */
+    --text-muted: #a1a1aa;      /* Muted silver/zinc body text (zinc-400) */
+    
+    /* Accents */
+    --accent-steel: #52525b;    /* Monochromatic steel (zinc-600) */
+    --accent-steel-hover: #71717a; /* Lighter steel highlight */
+    --accent-blue: #3b82f6;     /* Electric azure highlight */
+    --accent-emerald: #10b981;  /* Status indicator green */
+    
+    /* Borders */
+    --border-color: rgba(255, 255, 255, 0.08);       /* Ultra thin border */
+    --border-color-hover: rgba(255, 255, 255, 0.18); /* Shift on hover */
+    
+    /* Bento Layout Grid */
+    --bento-gap: 1.25rem;
+    --bento-padding: 1.5rem;
 }
 
-/* Base styles for better browser compatibility */
+/* Base resets & typography */
 * {
     box-sizing: border-box;
 }
@@ -27,19 +39,25 @@ html {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: var(--bg-primary);
+    background-color: var(--bg-primary);
 }
 
 body {
     min-height: 100vh;
     font-feature-settings: "kern" 1;
     text-rendering: optimizeLegibility;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a1a1a 100%);
+    background-color: var(--bg-primary);
+    background-image: radial-gradient(
+        circle at 50% 0%,
+        rgba(255, 255, 255, 0.03) 0%,
+        transparent 50%
+    );
     background-attachment: fixed;
-    color: var(--text-primary);
+    color: var(--text-secondary);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
-/* Ensure consistent button and form styling */
+/* Form styling resets */
 button,
 input,
 textarea,
@@ -49,15 +67,14 @@ select {
     line-height: inherit;
 }
 
-/* Cyberpunk Focus styles */
+/* Accessible tech-focus outline styles */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-    outline: 2px solid var(--neon-cyan);
+    outline: 2px solid var(--accent-blue);
     outline-offset: 2px;
-    box-shadow: 0 0 10px var(--neon-cyan);
 }
 
 /* Smooth scrolling */
@@ -67,170 +84,178 @@ select:focus-visible {
     }
 }
 
-/* Cyberpunk Animations and Effects */
-@keyframes neon-glow {
-    0%,
-    100% {
-        text-shadow:
-            0 0 5px currentColor,
-            0 0 10px currentColor,
-            0 0 15px currentColor;
-    }
-    50% {
-        text-shadow:
-            0 0 10px currentColor,
-            0 0 20px currentColor,
-            0 0 30px currentColor;
-    }
+/* Selection highlight styling */
+::selection {
+    background: rgba(59, 130, 246, 0.25);
+    color: var(--text-primary);
 }
 
-@keyframes pulse-border {
-    0%,
-    100% {
-        box-shadow: 0 0 5px var(--border-glow);
-    }
-    50% {
-        box-shadow:
-            0 0 20px var(--border-glow),
-            0 0 30px var(--border-glow);
-    }
+/* Custom Scrollbars */
+html, body {
+    --scrollbar-thumb: var(--border-color-hover);
+    --scrollbar-track: var(--bg-primary);
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
 }
 
-@keyframes matrix-bg {
-    0% {
-        background-position: 0% 0%;
+/* Legacy WebKit fallback for custom scrollbars */
+@supports not (scrollbar-color: auto) {
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
     }
-    100% {
-        background-position: 100% 100%;
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb);
+        border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--scrollbar-track);
     }
 }
 
-/* Glowing text effects */
-.glow-cyan {
-    color: var(--neon-cyan);
-    animation: neon-glow 2s ease-in-out infinite alternate;
+/* --- Premium Layout & Container Components --- */
+
+/* Bento Grid System */
+.grid-bento {
+    display: grid;
+    gap: var(--bento-gap);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-.glow-pink {
-    color: var(--neon-pink);
-    animation: neon-glow 2s ease-in-out infinite alternate;
+/* Tech Card */
+.tech-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glow-green {
-    color: var(--neon-green);
-    animation: neon-glow 2s ease-in-out infinite alternate;
+.tech-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-color-hover);
+    background-color: var(--bg-card-hover);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Cyberpunk cards with glowing borders */
-.cyber-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-glow);
-    animation: pulse-border 3s ease-in-out infinite;
-    transition: all 0.3s ease;
-}
-
-.cyber-card:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--neon-cyan);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
-}
-
-/* Glowing buttons */
-.cyber-button {
-    background: linear-gradient(45deg, var(--bg-secondary), var(--bg-card));
-    border: 1px solid var(--neon-cyan);
-    color: var(--neon-cyan);
+/* Tech Button */
+.tech-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.875rem;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.cyber-button:hover {
-    background: var(--neon-cyan);
+.tech-button:hover {
+    background-color: var(--text-primary);
     color: var(--bg-primary);
-    box-shadow: 0 0 20px var(--neon-cyan);
-    transform: scale(1.05);
+    border-color: var(--text-primary);
+    transform: translateY(-1px);
 }
 
-.cyber-button::before {
+.tech-button:active {
+    transform: translateY(0);
+}
+
+/* Tech Tag (Monospaced Zinc Tag) */
+.tech-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+    line-height: 1;
+    font-weight: 500;
+    color: var(--text-muted);
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 9999px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-tag:hover {
+    color: var(--text-primary);
+    border-color: var(--border-color-hover);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Glow Dot (Tiny status indicators) */
+.glow-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-emerald);
+    position: relative;
+}
+
+.glow-dot::after {
     content: "";
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(0, 255, 255, 0.1),
-        transparent
-    );
-    transition: transform 0.6s;
-    transform: rotate(0deg);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: inherit;
+    opacity: 0.4;
+    animation: pulse-dot 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
-.cyber-button:hover::before {
-    transform: rotate(90deg);
+@keyframes pulse-dot {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--neon-cyan);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--neon-pink);
-}
-
-/* Selection styling */
-::selection {
-    background: var(--neon-cyan);
-    color: var(--bg-primary);
-}
-
-/* Matrix-like background effect */
+/* Clean, modern version of the background grid overlay */
 .matrix-bg {
     position: relative;
+    overflow: hidden;
 }
 
 .matrix-bg::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        radial-gradient(
-            circle at 20% 50%,
-            rgba(0, 255, 255, 0.1) 0%,
-            transparent 50%
-        ),
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(255, 0, 255, 0.1) 0%,
-            transparent 50%
-        ),
-        radial-gradient(
-            circle at 40% 80%,
-            rgba(57, 255, 20, 0.1) 0%,
-            transparent 50%
-        );
-    animation: matrix-bg 20s ease-in-out infinite;
+    inset: 0;
+    --dot-color: rgba(255, 255, 255, 0.03);
+    background-image: 
+        radial-gradient(var(--dot-color) 1px, transparent 1px),
+        radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 60%);
+    background-size: 24px 24px, 100% 100%;
+    background-position: 0 0, center center;
     pointer-events: none;
+    z-index: 0;
 }
 
-/* Neon border effect for navigation */
+.matrix-bg > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Minimalist navigation border line highlight */
 .nav-glow {
     position: relative;
 }
@@ -241,12 +266,119 @@ select:focus-visible {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(
         90deg,
-        var(--neon-cyan),
-        var(--neon-pink),
-        var(--neon-cyan)
+        transparent,
+        rgba(255, 255, 255, 0.12),
+        transparent
     );
-    opacity: 0.7;
+}
+
+/* --- Compatibility Aliases for Cyberpunk Legacy Classes --- */
+
+.cyber-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-card:hover {
+    transform: translateY(-2px) !important;
+    border-color: var(--border-color-hover) !important;
+    background-color: var(--bg-card-hover) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.cyber-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.875rem;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.cyber-button:hover {
+    background-color: var(--text-primary) !important;
+    color: var(--bg-primary) !important;
+    border-color: var(--text-primary) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: none !important;
+}
+
+.cyber-button::before {
+    display: none !important; /* Ditch the cyber glow sweep animation */
+}
+
+.cyber-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+    line-height: 1;
+    font-weight: 500;
+    color: var(--text-muted) !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 9999px !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: none !important;
+}
+
+.cyber-tag:hover {
+    color: var(--text-primary) !important;
+    border-color: var(--border-color-hover) !important;
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    box-shadow: none !important;
+}
+
+/* Subtle, clean heading styles mapping */
+.glow-cyan,
+.glow-pink,
+.glow-green,
+.glow-text {
+    text-shadow: none !important;
+    animation: none !important;
+}
+
+.glow-cyan {
+    color: var(--text-primary);
+}
+.glow-cyan:hover {
+    color: var(--text-primary);
+}
+
+.glow-pink {
+    color: var(--text-primary);
+}
+.glow-pink:hover {
+    color: var(--text-primary);
+}
+
+.glow-green {
+    color: var(--text-secondary);
+}
+.glow-green:hover {
+    color: var(--text-primary);
+}
+
+.glow-text {
+    color: var(--text-primary);
 }

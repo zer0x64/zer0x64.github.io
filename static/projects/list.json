@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "shellcide",
+    "name": "shellcide",
+    "description": "An interactive process manager and visual system debugger dashboard. Runs fully client-side.",
+    "path": "/projects/shellcide/index.html",
+    "github": "https://github.com/zer0x64/shellcide",
+    "tags": ["Rust", "Wasm", "TypeScript"],
+    "status": "active"
+  }
+]

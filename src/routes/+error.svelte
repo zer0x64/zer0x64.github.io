@@ -20,13 +20,15 @@
                     </h1>
                     <h2 class="text-4xl font-bold text-cyan-400 mb-6 font-mono">
                         {#if status === 404}
-                            <span class="text-red-500">[</span> ACCESS DENIED
+                            <span class="text-red-500">[</span> Not found
                             <span class="text-red-500">]</span>
                         {:else if status}
-                            <span class="text-red-500">[</span> SYSTEM ERROR {status}
+                            <span class="text-red-500">[</span> An error
+                            occurred with status code: {status}
                             <span class="text-red-500">]</span>
                         {:else}
-                            <span class="text-red-500">[</span> CRITICAL FAILURE
+                            <span class="text-red-500">[</span> An unexpected
+                            error occurred
                             <span class="text-red-500">]</span>
                         {/if}
                     </h2>
