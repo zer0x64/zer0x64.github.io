@@ -13,6 +13,29 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Install Trunk
+        uses: jetli/trunk-action@v0.5.0
+        with:
+          version: 'latest'
+
+      - name: Build shellcide
+        run: |
+          cd shellcide
+          trunk build --release
+
+      - name: Move shellcide build to static/projects/shellcide
+        run: |
+          mkdir -p static/projects/shellcide
+          rm -rf static/projects/shellcide/*
+          cp -R shellcide/dist/* static/projects/shellcide/
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
