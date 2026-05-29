@@ -1,0 +1,3 @@
+[submodule "shellcide"]
+	path = shellcide
+	url = https://github.com/zer0x64/shellcide
