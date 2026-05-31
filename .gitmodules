@@ -1,3 +1,6 @@
 [submodule "shellcide"]
 	path = shellcide
 	url = https://github.com/zer0x64/shellcide
+[submodule "pbkdf2-identifier"]
+	path = pbkdf2-identifier
+	url = https://github.com/zer0x64/pbkdf2-identifier

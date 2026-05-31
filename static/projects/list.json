@@ -7,5 +7,14 @@
     "github": "https://github.com/zer0x64/shellcide",
     "tags": ["shellcode", "x86", "Rust", "Wasm"],
     "status": "active"
+  },
+  {
+    "slug": "pbkdf2-identifier",
+    "name": "pbkdf2-identifier",
+    "description": "An interactive tool to identify the parameters used to generate a PBKDF2 hash.",
+    "path": "/projects/pbkdf2-identifier/index.html",
+    "github": "https://github.com/zer0x64/pbkdf2-identifier",
+    "tags": ["PBKDF2", "Cryptography", "Rust", "Wasm"],
+    "status": "active"
   }
 ]

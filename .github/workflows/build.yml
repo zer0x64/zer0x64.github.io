@@ -45,5 +45,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install wasm-bindgen-cli
+        uses: jetli/wasm-bindgen-action@v0.2.0
+        with:
+          version: "0.2.122"
+
+      - name: Build pbkdf2-identifier
+        run: |
+          cd pbkdf2-identifier/gui
+          npm install
+          npm run build -- --base=/projects/pbkdf2-identifier/
+
+      - name: Move pbkdf2-identifier build to static/projects/pbkdf2-identifier
+        run: |
+          mkdir -p static/projects/pbkdf2-identifier
+          rm -rf static/projects/pbkdf2-identifier/*
+          cp -R pbkdf2-identifier/gui/dist/* static/projects/pbkdf2-identifier/
+
       - name: Build SvelteKit application
         run: npm run build # This will create the production build in the 'build' or 'dist' directory
