@@ -1,8 +1,16 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+    import { dev } from "$app/environment";
     import favicon from "$lib/assets/favicon.svg";
     import "../app.css";
 
     let { children } = $props();
+
+    onMount(() => {
+        if ("serviceWorker" in navigator && !dev) {
+            navigator.serviceWorker.register("/service-worker.js");
+        }
+    });
     let mobileMenuOpen = $state(false);
     let mobileMenuRef = $state<HTMLDivElement>();
     let mobileMenuOpenRef = $state<HTMLButtonElement>();
@@ -11,13 +19,16 @@
         { href: "/", name: "Home" },
         { href: "/about", name: "About" },
         { href: "/blog", name: "Blog" },
-        { href: "/projects", name: "Projects" }
+        { href: "/projects", name: "Projects" },
     ];
 
     const socialLinks = [
         { href: "https://github.com/zer0x64", name: "github" },
-        { href: "https://bsky.app/profile/zer0x64.bsky.social", name: "bluesky" },
-        { href: "https://www.linkedin.com/in/zer0x64/", name: "linkedin" }
+        {
+            href: "https://bsky.app/profile/zer0x64.bsky.social",
+            name: "bluesky",
+        },
+        { href: "https://www.linkedin.com/in/zer0x64/", name: "linkedin" },
     ];
 
     function handleKeydown(event: KeyboardEvent) {
@@ -46,7 +57,9 @@
 </svelte:head>
 
 <div class="min-h-screen flex flex-col matrix-bg">
-    <nav class="sticky top-0 z-50 bg-black/60 backdrop-blur-md border-b border-zinc-800/40">
+    <nav
+        class="sticky top-0 z-50 bg-black/60 backdrop-blur-md border-b border-zinc-800/40"
+    >
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
@@ -71,7 +84,7 @@
                     <button
                         class="text-zinc-400 hover:text-white focus:outline-none transition-colors duration-200"
                         aria-label="Toggle mobile menu"
-                        onclick={() => mobileMenuOpen = !mobileMenuOpen}
+                        onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
                         bind:this={mobileMenuOpenRef}
                     >
                         <svg
@@ -114,7 +127,7 @@
                         <a
                             {href}
                             class="block text-zinc-400 hover:text-white px-3 py-2 rounded text-sm transition-colors duration-200"
-                            onclick={() => mobileMenuOpen = false}>{name}</a
+                            onclick={() => (mobileMenuOpen = false)}>{name}</a
                         >
                     {/each}
                 </div>
@@ -122,19 +135,29 @@
         {/if}
     </nav>
 
-    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+    <main
+        class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10"
+    >
         {@render children?.()}
     </main>
 
     <footer class="border-t border-zinc-800/30 py-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-zinc-500">
-            <div>&copy; {new Date().getFullYear()} zer0x64. All rights reserved.</div>
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-zinc-500"
+        >
+            <div>
+                &copy; {new Date().getFullYear()} zer0x64. All rights reserved.
+            </div>
             <div class="flex space-x-6">
                 {#each socialLinks as { href, name }}
-                    <a href={href} class="hover:text-zinc-300 transition-colors" target="_blank" rel="noopener noreferrer">{name}</a>
+                    <a
+                        {href}
+                        class="hover:text-zinc-300 transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer">{name}</a
+                    >
                 {/each}
             </div>
         </div>
     </footer>
 </div>
-

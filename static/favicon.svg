@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect x="2" y="2" width="124" height="124" rx="28" fill="#09090b" stroke="#27272a" stroke-width="4"/>
+  <text x="20" y="80" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="54" font-weight="900">&gt;</text>
+  <text x="60" y="76" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="38" font-weight="bold">64</text>
+  <rect x="100" y="48" width="12" height="30" fill="#3b82f6" rx="2">
+    <animate attributeName="opacity" values="1;0;1" dur="1.5s" repeatCount="indefinite"/>
+  </rect>
+</svg>
