@@ -1,1 +1,68 @@
-; TODO
+body {
+  background: #05070a;
+  color: #00ffff;
+  font-family: monospace;
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 20px;
+  line-height: 1.6;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+h1, h2, h3, th {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+p {
+  color: #8899a6;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  border: 1px solid #00ffff33;
+  padding: 8px;
+}
+
+th {
+  background: rgba(0, 255, 255, 0.05);
+}
+
+code {
+  background: rgba(0, 255, 255, 0.15);
+  padding: 2px 4px;
+}
+
+input, output {
+  background: #0d1117;
+  border: 1px solid #00ffff;
+  color: #00ffff;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 8px;
+  margin: 8px 0;
+  outline: none;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  background: #00ffff;
+  color: #05070a;
+  font-weight: bold;
+}
+
+input[type="submit"]:hover {
+  box-shadow: 0 0 12px #00ffff;
+}
+
+output {
+  display: block;
+  min-height: 38px;
+  border: 1px dashed #00ffff;
+  word-break: break-all;
+}
