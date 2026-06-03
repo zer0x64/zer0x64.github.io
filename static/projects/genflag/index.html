@@ -1,0 +1,75 @@
+<!doctype html>
+<head>
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <h1>Genflag</h1>
+    <h2>A local flag generator for CTFs</h2>
+    <p>
+        Feel free to look at the network tab and/or the page source to verify it
+        is local only. The code has been kept barebone for this specific
+        purpose.
+    </p>
+    <h3>Format Specifiers</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Specifier</th>
+                <th>Output</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>{:x}</code></td>
+                <td>Lowercase hexadecimal</td>
+            </tr>
+            <tr>
+                <td><code>{:X}</code></td>
+                <td>Uppercase hexadecimal</td>
+            </tr>
+            <tr>
+                <td><code>{:b64}</code></td>
+                <td>Base64 (with padding)</td>
+            </tr>
+            <tr>
+                <td><code>{:b64-}</code></td>
+                <td>Base64 (without padding)</td>
+            </tr>
+            <tr>
+                <td><code>{:b64url}</code></td>
+                <td>Base64url (with padding)</td>
+            </tr>
+            <tr>
+                <td><code>{:b64url-}</code></td>
+                <td>Base64url (without padding)</td>
+            </tr>
+            <tr>
+                <td><code>{:a}</code></td>
+                <td>Random characters from a custom alphabet</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        To include literal braces in the output, wrap the specifier in double
+        braces. For example, <code>FLAG{{:x}}</code> produces
+        <code>FLAG{&lt;hex&gt;}</code>.
+    </p>
+
+    <form id="frm">
+        <label>Flag format: </label
+        ><input type="text" id="format" value="FLAG-{{:x}}" /><br />
+        <div id="alphabetDiv" style="display: none">
+            <label>Alphabet: </label
+            ><input
+                type="text"
+                id="alphabet"
+                value="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            /><br />
+        </div>
+        <label>Randomness length</label
+        ><input type="number" id="length" value="32" /><br />
+        <input type="submit" value="Generate!" /><br />
+    </form>
+    <output type="text" id="flag"></output>
+</body>

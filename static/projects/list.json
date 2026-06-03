@@ -16,5 +16,14 @@
     "github": "https://github.com/zer0x64/pbkdf2-identifier",
     "tags": ["PBKDF2", "Cryptography", "Rust", "Wasm"],
     "status": "active"
+  },
+  {
+    "slug": "genflag",
+    "name": "genflag",
+    "description": "A local-only flag generator for CTF",
+    "path": "/projects/genflag/index.html",
+    "github": "https://github.com/zer0x64/genflag",
+    "tags": ["CTF"],
+    "status": "active"
   }
 ]

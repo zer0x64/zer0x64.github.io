@@ -25,4 +25,4 @@ vite.config.ts.timestamp-*
 # Sub-projects (ignore all self-contained project folders except the list.json config)
 /static/projects/*
 !/static/projects/list.json
-
+!/static/projects/genflag
