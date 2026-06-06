@@ -25,5 +25,32 @@
     "github": "https://github.com/zer0x64/genflag",
     "tags": ["CTF"],
     "status": "active"
+  },
+  {
+    "slug": "hashcrab",
+    "name": "hashcrab",
+    "description": "Web-based GPU-accelerated hash cracking tool",
+    "path": "/projects/hashcrab/index.html",
+    "github": "https://github.com/zer0x64/hashcrab",
+    "tags": ["cryptography"],
+    "status": "dev"
+  },
+  {
+    "slug": "nestadia",
+    "name": "nestadia",
+    "description": "An NES emulator",
+    "path": "/projects/nestadia/index.html",
+    "github": "https://github.com/zer0x64/nestadia",
+    "tags": ["emulator", "NES"],
+    "status": "frontend-dev"
+  },
+  {
+    "slug": "gband",
+    "name": "gband",
+    "description": "A Game Boy emulator",
+    "path": "/projects/gband/index.html",
+    "github": "https://github.com/zer0x64/gband",
+    "tags": ["emulator", "Game Boy"],
+    "status": "frontend-dev"
   }
 ]
